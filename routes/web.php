@@ -24,17 +24,13 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
 
      //Admin
-
-
-
 Route::prefix('admin')->group(function (){
-
     Route::middleware(['guest'])->group(function (){
         Route::get('/getlogin', [AdminController::class, 'getLogin'])->name('admin.getlogin');
         Route::post('/postlogin', [AdminController::class, 'postLogin'])->name('admin.postlogin');
         Route::get('/getregister', [AdminController::class, 'getRegister'])->name('admin.getregister');
         Route::post('/postregister', [AdminController::class, 'PostRegister'])->name('admin.postregister');
-        Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
+//        Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
 
     });
     Route::middleware(['auth:admin'])->group(function (){

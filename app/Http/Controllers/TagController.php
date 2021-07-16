@@ -14,7 +14,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.pages.tag');
+         $tags = Tag::all();
+        return view('backend.admin.pages.tag', [
+            'tags' => $tags
+        ]);
     }
 
     /**
@@ -35,7 +38,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+             'name' => 'required',
+         ]);
+
+         $data = collect($request->only('name'))->all();
+          Tag::create($data);
+         return  redirect()->back()->with('success', 'tags addded succeessfuly' );
+
+
     }
 
     /**
@@ -80,6 +91,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->back()->with('success', 'tags deleted successfull');
     }
 }
