@@ -18,13 +18,12 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
       // hompage
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
 
      //Admin
-Route::view('/admin', 'backend.admin.pages.dashboard')->name('admin.dashboard');
 
 
 
@@ -35,15 +34,11 @@ Route::prefix('admin')->group(function (){
         Route::post('/postlogin', [AdminController::class, 'postLogin'])->name('admin.postlogin');
         Route::get('/getregister', [AdminController::class, 'getRegister'])->name('admin.getregister');
         Route::post('/postregister', [AdminController::class, 'PostRegister'])->name('admin.postregister');
-
-
-
-
         Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
 
     });
     Route::middleware(['auth:admin'])->group(function (){
-        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
+        Route::get('/home', [AdminController::class, 'dashboard'])->name('admin.home');
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     });

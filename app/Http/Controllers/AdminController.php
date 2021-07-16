@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
+
+    public  function dashboard(){
+        return view('backend.admin.pages.dashboard');
+    }
     public  function getLogin(){
         return view('backend.admin.auth.login');
     }
@@ -31,16 +36,24 @@ class AdminController extends Controller
     return redirect()->back()->with('success', 'successfully register');
     }
 
-    public function postLogin(Request  $request){
+    public function postLogin(Request $request){
+        $cred = $request->only('email', 'password');
 
-        if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))){
-
-            return redirect()->back()->with('info', 'could not sign you in with those details');
-
+        if(Auth::guard('admin')->attempt($cred)){
+            return redirect()->route('admin.home');
+        }else{
+            return  redirect()->route('admin.getlogin');
         }
 
-        return redirect()->route('home')
-            ->with('info', 'you are successfully signed in!');
+
 
     }
+    public function logout(){
+//        dd('ok');
+        Auth::logout();
+        return redirect()->route('homepage');
+
+    }
+
+
 }
