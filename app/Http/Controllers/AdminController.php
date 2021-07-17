@@ -20,6 +20,7 @@ class AdminController extends Controller
     public function getRegister(){
         return view('backend.admin.auth.register');
 
+
     }
 
     public function PostRegister(Request $request){

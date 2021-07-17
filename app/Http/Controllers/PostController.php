@@ -60,7 +60,7 @@ class PostController extends Controller
             $filename='';
         }
         $post = Post::create(collect($request->only(['title','body','slug','category_id']))->put('image',$filename)->all());
-
+        $post->tags()->sync($request->name);
         $post->save();
 
         return redirect()->back();
@@ -97,7 +97,31 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        dd($request->all());
+        $this->validate($request,[
+            'title' => 'required',
+            'body'=>  'required',
+            'slug' => 'required',
+            'image' => 'required',
+            'category_id' => 'required',
+
+        ]);
+
+        if ( $request->hasfile('image')){
+            $file  =$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename =    time() . '.' .$extension;
+            $file->move('upload/images', $filename);
+
+        }
+        else {
+            $filename='';
+        }
+        $post = Post::update(collect($request->only(['title','body','slug','category_id']))->put('image',$filename)->all());
+        $post->tags()->sync($request->name);
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -108,6 +132,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return  redirect()->back();
     }
 }

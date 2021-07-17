@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Auth;
@@ -18,11 +19,26 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
-      // hompage
+
+      // homepage
 
 Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
+    // user
+Route::prefix('user')->group(function (){
+    Route::middleware(['guest'])->group(function (){
+        Route::get('/getlogin', [UserController::class, 'getLogin'])->name('user.getlogin');
+        Route::post('/postlogin', [UserController::class, 'postLogin'])->name('user.postlogin');
+        Route::get('/getregister', [UserController::class, 'getRegister'])->name('user.getregister');
+        Route::post('/postregister', [UserController::class, 'PostRegister'])->name('user.postregister');
+//        Route::post('/check', [AdminController::class, 'check'])->name('admin.check');
 
+    });
+    Route::middleware(['auth:user'])->group(function (){
+        Route::get('/home', [AdminController::class, 'dashboard'])->name('user.home');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('user.logout');
+
+    });
+});
      //Admin
 Route::prefix('admin')->group(function (){
     Route::middleware(['guest'])->group(function (){

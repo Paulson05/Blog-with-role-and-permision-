@@ -1,86 +1,79 @@
 
-
 <!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js" ></script>
-<script src="../assets/js/core/popper.min.js" ></script>
+<script src="../../assets/js/core/jquery.min.js" ></script>
+<script src="../../assets/js/core/popper.min.js" ></script>
 
 
-<script src="../assets/js/core/bootstrap.min.js" ></script>
+<script src="../../assets/js/core/bootstrap.min.js" ></script>
 
 
-<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js" ></script>
+<script src="../../assets/js/plugins/perfect-scrollbar.jquery.min.js" ></script>
 
-<script src="../assets/js/plugins/moment.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/dzq2nbo4doqks8r4ev85nuhv0bxzirce0l4tai4aza7yj42i/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="../../assets/js/plugins/moment.min.js"></script>
+
 
 
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-<script src="../assets/js/plugins/bootstrap-switch.js"></script>
+<script src="../../assets/js/plugins/bootstrap-switch.js"></script>
 
 <!--  Plugin for Sweet Alert -->
-<script src="../assets/js/plugins/sweetalert2.min.js"></script>
+<script src="../../assets/js/plugins/sweetalert2.min.js"></script>
 
 <!-- Forms Validations Plugin -->
-<script src="../assets/js/plugins/jquery.validate.min.js"></script>
+<script src="../../assets/js/plugins/jquery.validate.min.js"></script>
 
 <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-<script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
 
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-<script src="../assets/js/plugins/bootstrap-selectpicker.js" ></script>
+<script src="../../assets/js/plugins/bootstrap-selectpicker.js" ></script>
 
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-<script src="../assets/js/plugins/bootstrap-datetimepicker.js"></script>
+<script src="../../assets/js/plugins/bootstrap-datetimepicker.js"></script>
 
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-<script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+<script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
 
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-<script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+<script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
 
 <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-<script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+<script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
 
 <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-<script src="../assets/js/plugins/fullcalendar.min.js"></script>
+<script src="../../assets/js/plugins/fullcalendar.min.js"></script>
 
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-<script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+<script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
 
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-<script src="../assets/js/plugins/nouislider.min.js" ></script>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="../../assets/js/plugins/nouislider.min.js" ></script>
 
 
-<div class="main-container container-fluid">
 <!--  Google Maps Plugin    -->
 
 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGat1sgDZ-3y6fFe6HD7QUziVC6jlJNog"></script>
 
 <!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="../../../buttons.github.io/buttons.js"></script>
+<script async defer src="../../../../buttons.github.io/buttons.js"></script>
 
 
 <!-- Chart JS -->
-<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="../../assets/js/plugins/chartjs.min.js"></script>
 
 <!--  Notifications Plugin    -->
-<script src="../assets/js/plugins/bootstrap-notify.js"></script>
+<script src="../../assets/js/plugins/bootstrap-notify.js"></script>
 
 
 
 
 
-<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc --><script src="../assets/js/now-ui-dashboard.minaa26.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/demo/demo.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc --><script src="../../assets/js/now-ui-dashboard.minaa26.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="../../assets/demo/demo.js"></script>
 
 
 <!-- Sharrre libray -->
-<script src="../assets/demo/jquery.sharrre.js"></script>
+<script src="../../assets/demo/jquery.sharrre.js"></script>
 
 <script>
     $(document).ready(function(){
@@ -139,7 +132,7 @@
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
             n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
             t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-            document,'script','../../../connect.facebook.net/en_US/fbevents.js');
+            document,'script','../../../../connect.facebook.net/en_US/fbevents.js');
 
         try{
             fbq('init', '111649226022273');
@@ -157,46 +150,6 @@
     />
 
 </noscript>
-
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-{{--            /**--}}
-{{--             * for showing edit item popup--}}
-{{--             */--}}
-
-{{--            $(document).on('click', "#edit-item", function() {--}}
-{{--                $(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.--}}
-
-{{--                var options = {--}}
-{{--                    'backdrop': 'static'--}}
-{{--                };--}}
-{{--                $('#edit-modal').modal(options)--}}
-{{--            })--}}
-
-{{--            // on modal show--}}
-{{--            $('#edit-modal').on('show.bs.modal', function() {--}}
-{{--                var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?--}}
-{{--                var row = el.closest(".data-row");--}}
-
-{{--                // get the data--}}
-{{--                var id = el.data('item-id');--}}
-{{--                var name = row.children(".name").text();--}}
-{{--                var description = row.children(".description").text();--}}
-
-{{--                // fill the data in the input fields--}}
-{{--                $("#modal-input-id").val(id);--}}
-{{--                $("#modal-input-name").val(name);--}}
-{{--                $("#modal-input-description").val(description);--}}
-
-{{--            })--}}
-
-{{--            // on modal hide--}}
-{{--            $('#edit-modal').on('hide.bs.modal', function() {--}}
-{{--                $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')--}}
-{{--                $("#edit-form").trigger("reset");--}}
-{{--            })--}}
-{{--        })--}}
-{{--    </script>--}}
 
 <script>
     $(document).ready(function(){
@@ -347,12 +300,9 @@
         });
     });
 </script>
+
 <script>
     $(document).ready(function(){
-        // Javascript method's body can be found in assets3/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.initVectorMap();
-
+        demo.checkFullPageBackgroundImage();
     });
 </script>
