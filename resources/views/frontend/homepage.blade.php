@@ -45,51 +45,39 @@
                         <!-- Latest Post -->
                         <div class="widget-area latest_post mb-30">
                             <h6>Recent Post</h6>
+                            @php
+                            $posts = \App\Models\Post::orderBy('created_at', 'asc')->limit(3)->get();
+                            @endphp
 
+
+                        @forelse($posts as $post)
                             <!-- Recent Post -->
                             <div class="single_latest_post">
                                 <div class="post-thumbnail">
-                                    <img src="/frontend/img/bg-img/lp-1.jpg" alt="">
+                                    <img src="upload/images/{{$post->image}}" alt="">
                                 </div>
                                 <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
+                                    <a href="#">{{$post->title}}</a>
+                                    <p>{{\Carbon\Carbon::parse($post->created_at)->format('M d y')}}</p>
                                 </div>
                             </div>
-
-                            <!-- Recent Post -->
-                            <div class="single_latest_post">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-2.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
-                                </div>
-                            </div>
-
-                            <!-- Recent Post -->
-                            <div class="single_latest_post">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-3.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
-                                </div>
-                            </div>
+                            @empty
+                            <p class="text-center text-secondary">no post yet</p>
+                            @endforelse
                         </div>
 
                         <!-- Catagory -->
                         <div class="widget-area catagory_section mb-30">
-                            <h6>Catagory</h6>
+                            <h6>TOTAL Category {{$post->count()}}</h6>
                             <ul>
-                                <li><a href="#">Women <span class="text-muted">(21)</span></a></li>
-                                <li><a href="#">Men <span class="text-muted">(5)</span></a></li>
-                                <li><a href="#">Fashion <span class="text-muted">(17)</span></a></li>
-                                <li><a href="#">Electronice <span class="text-muted">(11)</span></a></li>
-                                <li><a href="#">Sports <span class="text-muted">(16)</span></a></li>
-                                <li><a href="#">Intimates <span class="text-muted">(9)</span></a></li>
+                                @php
+                                $cats = \App\Models\Category::all()
+                                @endphp@forelse($cats as $item)
+                                <li><a href="#">{{$item->name}}<span class="text-muted">({{count($item->posts)}})</span></a></li>
+                                @empty
+                                           <p class="text-center text-secondary">empty </p>
+                                @endforelse
+
                             </ul>
                         </div>
 
