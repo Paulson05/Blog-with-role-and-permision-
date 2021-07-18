@@ -73,7 +73,7 @@
                                 @php
                                 $cats = \App\Models\Category::all()
                                 @endphp@forelse($cats as $item)
-                                <li><a href="#">{{$item->name}}<span class="text-muted">({{count($item->posts)}})</span></a></li>
+                                <li><a href="{{ route('getSinglePost',['post'=>$post->slug])  }}">{{$item->name}}<span class="text-muted">({{count($item->posts)}})</span></a></li>
                                 @empty
                                            <p class="text-center text-secondary">empty </p>
                                 @endforelse
@@ -97,20 +97,15 @@
                         <!-- Tages -->
                         <div class="widget-area tag_section mb-30">
                             <h6>Tags Cloud</h6>
+                            @php
+                            $tags = \App\Models\Tag::all();
+                            @endphp
                             <ul>
-                                <li><a href="#">Women</a></li>
-                                <li><a href="#">Men</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Electronice</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Intimates</a></li>
-                                <li><a href="#">Kids</a></li>
-                                <li><a href="#">Dresses</a></li>
-                                <li><a href="#">Rompers</a></li>
-                                <li><a href="#">Bras</a></li>
-                                <li><a href="#">Shorts</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">T-shirts</a></li>
+                                   @forelse($tags as $tag)
+                                <li><a href="#">{{$tag->name}}</a></li>
+                                @empty
+                                       <p class="text-center text-secondary"></p>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
