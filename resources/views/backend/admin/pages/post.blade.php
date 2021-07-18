@@ -88,7 +88,7 @@
                                                             <div class="form-check form-check-inline" >
                                                                 @foreach($tags as $tag)
                                                                 <label class="form-check-label"  >
-                                                                    <input class="form-check-input" name="name" type="checkbox" value="{{$tag->id}}">
+                                                                    <input class="form-check-input" name="name[]" type="checkbox" value="{{$tag->id}}">
                                                                     <span class="form-check-sign"></span>
                                                                     {{$tag->name}}
                                                                 </label>
