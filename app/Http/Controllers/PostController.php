@@ -97,11 +97,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        dd($request->all());
+//        dd($request->all());
         $this->validate($request,[
             'title' => 'required',
             'body'=>  'required',
-            'slug' => 'required',
+            'slug' => 'require',
             'image' => 'required',
             'category_id' => 'required',
 

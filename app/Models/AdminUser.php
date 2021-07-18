@@ -13,4 +13,12 @@ class AdminUser extends Model implements AuthenticatableContract
     use Authenticatable;
     protected $table  = 'admin_users';
     protected  $guarded = [];
+
+    public function getName(){
+        return $this->name;
+    }
+
+    public function getImage(){
+        return $this->image;
+    }
 }

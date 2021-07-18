@@ -32,6 +32,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function getName(){
+        return $this->name;
+    }
 
     /**
      * The attributes that should be cast to native types.

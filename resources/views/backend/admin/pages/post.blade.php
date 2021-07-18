@@ -307,8 +307,8 @@
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                                         <div class="form-group">
                                                                             <strong>body</strong>
-                                                                            <textarea style="border: 1px solid red !important;"  id="mytextarea" cols="10" rows="5" placeholder="body" class="form-control" name="body" value = "{{$post->body}}">
-                                                                                       {{$post->body}}
+                                                                            <textarea style="border: 1px solid red !important;"  id="mytextarea" cols="10" rows="5" placeholder="body" class="form-control" name="body" value = "">
+
                                                                               </textarea>
 
                                                                         </div>

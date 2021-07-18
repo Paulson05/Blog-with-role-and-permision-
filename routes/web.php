@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -21,8 +22,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
       // homepage
-
-Route::get('/', [HomeController::class, 'homepage'])->name('homepage');
+Route::get('/', [BlogController::class, 'homePage'])->name('homepage');
     // user
 Route::prefix('user')->group(function (){
     Route::middleware(['guest'])->group(function (){
@@ -55,7 +55,10 @@ Route::prefix('admin')->group(function (){
 
     });
 });
+// slug to access single  page
 
+Route::get('blog/{post:slug}', [BlogController::class, 'getSinglePost'])->name('getSinglePost')
+    ->where('slug', '[\w\d\-\_]+');
 // post
 Route::resource('/post', PostController::class)->except('create');
 // tag
@@ -65,4 +68,3 @@ Route::resource('/category', CategoryController::class)->except('create');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -27,7 +27,7 @@
                         </div>
 
 
-                        <form class="form" method="post" action="{{route('user.postregister')}}">
+                        <form class="form" method="post" action="{{route('admin.postregister')}}">
                             @csrf
                             <div class="card card-login card-plain">
                                 <h2 class="text-center">Register</h2>

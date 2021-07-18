@@ -7,89 +7,29 @@
             <div class="row">
                 <div class="col-12 col-md-7 col-lg-8">
                     <!-- Single News Area -->
+                    @forelse($posts as $post)
+
                     <div class="single_blog_area">
                         <div class="blog_post_thumb">
-                            <a href="../../single-blog.html"><img src="frontend/img/bg-img/blog-1.jpg" alt="blog-post-thumb"></a>
+                            <a href="{{ route('getSinglePost',['post'=>$post->slug])  }}"><img src="upload/images/{{$post->image}}" alt="blog-post-thumb"></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <a href="#">9 Aug</a>
-                                <span>3 min read</span>
+                                <span>3 min </span>
                             </div>
                         </div>
                         <div class="blog_post_content">
-                            <a href="../../single-blog.html" class="blog_title">Eye Fashion Week 9 - 16 Aug 2019</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolorem accusamus. Tenetur sit dolore nesciunt ipsum aspernatur nam et, expedita placeat labore alias consequatur accusamus autem aliquam optio assumenda obcaecati.</p>
-                            <a href="../../single-blog.html">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
+                            <a href="{{ route('getSinglePost',['post'=>$post->slug])  }}" class="blog_title">{{$post->title}}k 9 - 16 Aug 2019</a>
+                             <p>{{$post->body}}</p>
+                            <a href="{{ route('getSinglePost',['post'=>$post->slug])  }}">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 
-                    <!-- Single News Area -->
-                    <div class="single_blog_area">
-                        <div class="blog_post_thumb">
-                            <a href="../../single-blog.html"><img src="frontend/img/bg-img/blog-2.jpg" alt="blog-post-thumb"></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <a href="#">8 Aug</a>
-                                <span>9 min read</span>
-                            </div>
-                        </div>
-                        <div class="blog_post_content">
-                            <a href="../../single-blog.html" class="blog_title">Casual Fashion Design Contest</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolorem accusamus. Tenetur sit dolore nesciunt ipsum aspernatur nam et, expedita placeat labore alias consequatur accusamus autem aliquam optio assumenda obcaecati.</p>
-                            <a href="../../single-blog.html">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
+                    @empty
+                        <p class="text-danger text-center">no post found</p>
+                    @endforelse
 
-                    <!-- Single News Area -->
-                    <div class="single_blog_area">
-                        <div class="blog_post_thumb">
-                            <a href="../../single-blog.html"><img src="frontend/img/bg-img/blog-3.jpg" alt="blog-post-thumb"></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <a href="#">6 Aug</a>
-                                <span>4 min read</span>
-                            </div>
-                        </div>
-                        <div class="blog_post_content">
-                            <a href="../../single-blog.html" class="blog_title">Top 10 Handbags in 2019</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolorem accusamus. Tenetur sit dolore nesciunt ipsum aspernatur nam et, expedita placeat labore alias consequatur accusamus autem aliquam optio assumenda obcaecati.</p>
-                            <a href="../../single-blog.html">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
 
-                    <!-- Single News Area -->
-                    <div class="single_blog_area">
-                        <div class="blog_post_thumb">
-                            <a href="../../single-blog.html"><img src="frontend/img/bg-img/blog-4.jpg" alt="blog-post-thumb"></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <a href="#">5 Aug</a>
-                                <span>2 min read</span>
-                            </div>
-                        </div>
-                        <div class="blog_post_content">
-                            <a href="../../single-blog.html" class="blog_title">Leather Shoes Festivals on DW Mart</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolorem accusamus. Tenetur sit dolore nesciunt ipsum aspernatur nam et, expedita placeat labore alias consequatur accusamus autem aliquam optio assumenda obcaecati.</p>
-                            <a href="../../single-blog.html">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- Single News Area -->
-                    <div class="single_blog_area">
-                        <div class="blog_post_thumb">
-                            <a href="../../single-blog.html"><img src="frontend/img/bg-img/blog-5.jpg" alt="blog-post-thumb"></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <a href="#">1 Aug</a>
-                                <span>11 min read</span>
-                            </div>
-                        </div>
-                        <div class="blog_post_content">
-                            <a href="../../single-blog.html" class="blog_title">Fashion carnival was held</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, dolorem accusamus. Tenetur sit dolore nesciunt ipsum aspernatur nam et, expedita placeat labore alias consequatur accusamus autem aliquam optio assumenda obcaecati.</p>
-                            <a href="../../single-blog.html">Continue Reading <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="blog_sidebar">

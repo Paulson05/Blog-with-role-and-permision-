@@ -25,16 +25,29 @@ class AdminController extends Controller
 
     public function PostRegister(Request $request){
 
-//        dd($request->all());
-     $this->validate($request, [
-         'name' => 'required',
-         'email' => 'required',
-         'password' => 'required',
-     ]);
 
-    $data = collect($request->only(['email', 'name']))->put('password',bcrypt($request->password))->all();
-    AdminUser::create($data);
-    return redirect()->back()->with('success', 'successfully register');
+
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required',
+            'password' => 'required',
+            'image' => 'required',
+        ]);
+        if ( $request->hasfile('image')){
+            $file  =$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename =    time() . '.' .$extension;
+            $file->move('upload2/images', $filename);
+
+        }
+        else {
+            $filename='';
+        }
+        $post = AdminUser::create(collect($request->only(['name','email']))->put('image',$filename)->put('password',bcrypt($request->password))->all());
+
+        $post->save();
+        return redirect()->route('admin.getlogin');
+
     }
 
     public function postLogin(Request $request){

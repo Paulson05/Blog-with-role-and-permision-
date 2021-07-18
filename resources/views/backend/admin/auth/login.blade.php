@@ -16,7 +16,7 @@
                     <div class="col-md-4 ml-auto mr-auto">
 
                  @include('backend.admin.templetes.partials.error')
-                        <form class="form" method="post" action="{{route('user.postlogin')}}">
+                        <form class="form" method="post" action="{{route('admin.postlogin')}}">
                                         @csrf
                             <div class="card card-login card-plain">
 
