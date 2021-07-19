@@ -68,11 +68,14 @@
 
                         <!-- Catagory -->
                         <div class="widget-area catagory_section mb-30">
-                            <h6>TOTAL Category {{$post->count()}}</h6>
+{{--                            <h6>TOTAL Category {{$post->count()}}</h6>--}}
                             <ul>
                                 @php
-                                $cats = \App\Models\Category::all()
-                                @endphp@forelse($cats as $item)
+                                $cats = \App\Models\Category::all();
+
+                                @endphp
+
+                                @forelse($cats as $item)
                                 <li><a href="{{ route('getSinglePost',['post'=>$post->slug])  }}">{{$item->name}}<span class="text-muted">({{count($item->posts)}})</span></a></li>
                                 @empty
                                            <p class="text-center text-secondary">empty </p>

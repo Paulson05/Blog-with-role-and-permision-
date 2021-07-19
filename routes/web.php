@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
@@ -65,6 +66,8 @@ Route::resource('/post', PostController::class)->except('create');
 Route::resource('/tag',TagController::class)->except('create');
 // category
 Route::resource('/category', CategoryController::class)->except('create');
+
+Route::post('/comments', [CommentController::class, 'postComment'])->name('comment.post');
 
 Auth::routes();
 

@@ -42,7 +42,7 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                               {{auth()->user()->getName()}}
+{{--                               {{auth()->user()->getName()}}--}}
                         <b class="caret"></b>
                     </span>
                     </a>

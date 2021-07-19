@@ -24,7 +24,7 @@
                     <!-- Blog Details Area -->
                     <div class="blog-details-area mb-50">
                         <!-- Image -->
-                        <img class="mb-30" src="img/bg-img/blog-3.jpg" alt="blog-img">
+                        <img class="mb-30" src="/upload/images/{{$post->image}}" alt="blog-img">
 
                         <!-- Blog Title -->
                         <h3 class="mb-30">Top 10 Handbags in 2019</h3>
@@ -119,11 +119,12 @@
                         <div class="contact_from mb-50">
                             <h5 class="mb-4">Leave a Comment</h5>
 
-                            <form action="#" method="post">
+                            <form action="{{route('comment.post',['comments'=>$post->id])}}" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group mb-30">
-                                            <input type="text" class="form-control" name="author" value="" placeholder="Name" tabindex="1">
+                                            <input type="text" class="form-control" name="name" value="" placeholder="Name" tabindex="1">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-6">
@@ -131,14 +132,10 @@
                                             <input type="text" class="form-control" name="email" value="" placeholder="Email" tabindex="2">
                                         </div>
                                     </div>
+
                                     <div class="col-12">
                                         <div class="form-group mb-30">
-                                            <input type="text" class="form-control" name="url" value="" placeholder="Website (Optional)" tabindex="3">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group mb-30">
-                                            <textarea class="form-control" name="comment" cols="30" rows="7" placeholder="Comment" tabindex="4"></textarea>
+                                            <textarea class="form-control" name="comments" cols="30" rows="7" placeholder="Comment" tabindex="4"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -164,51 +161,39 @@
                         <!-- Latest Post -->
                         <div class="widget-area latest_post mb-30">
                             <h6>Recent Post</h6>
+                        @php
+                            $posts = \App\Models\Post::orderBy('created_at', 'asc')->limit(3)->get();
+                        @endphp
 
-                            <!-- Recent Post -->
-                            <div class="single_latest_post">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-1.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
-                                </div>
-                            </div>
 
+                        @forelse($posts as $post)
                             <!-- Recent Post -->
-                            <div class="single_latest_post">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-2.jpg" alt="">
+                                <div class="single_latest_post">
+                                    <div class="post-thumbnail">
+                                        <img src="/upload/images/{{$post->image}}" alt="">
+                                    </div>
+                                    <div class="post-content">
+                                        <a href="#">{{$post->title}}</a>
+                                        <p>{{\Carbon\Carbon::parse($post->created_at)->format('M d y')}}</p>
+                                    </div>
                                 </div>
-                                <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
-                                </div>
-                            </div>
-
-                            <!-- Recent Post -->
-                            <div class="single_latest_post">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-3.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="#">7 Quick Ways to Make a Great Event Successful</a>
-                                    <p>5 min ago</p>
-                                </div>
-                            </div>
+                            @empty
+                                <p class="text-center text-secondary">no post yet</p>
+                            @endforelse
                         </div>
 
                         <!-- Catagory -->
                         <div class="widget-area catagory_section mb-30">
-                            <h6>Catagory</h6>
+                            <h6>TOTAL Category {{$post->count()}}</h6>
                             <ul>
-                                <li><a href="#">Women <span class="text-muted">(21)</span></a></li>
-                                <li><a href="#">Men <span class="text-muted">(5)</span></a></li>
-                                <li><a href="#">Fashion <span class="text-muted">(17)</span></a></li>
-                                <li><a href="#">Electronice <span class="text-muted">(11)</span></a></li>
-                                <li><a href="#">Sports <span class="text-muted">(16)</span></a></li>
-                                <li><a href="#">Intimates <span class="text-muted">(9)</span></a></li>
+                                @php
+                                    $cats = \App\Models\Category::all()
+                                @endphp@forelse($cats as $item)
+                                    <li><a href="{{ route('getSinglePost',['post'=>$post->slug])  }}">{{$item->name}}<span class="text-muted">({{count($item->posts)}})</span></a></li>
+                                @empty
+                                    <p class="text-center text-secondary">empty </p>
+                                @endforelse
+
                             </ul>
                         </div>
 
@@ -228,20 +213,15 @@
                         <!-- Tages -->
                         <div class="widget-area tag_section mb-30">
                             <h6>Tags Cloud</h6>
+                            @php
+                                $tags = \App\Models\Tag::all();
+                            @endphp
                             <ul>
-                                <li><a href="#">Women</a></li>
-                                <li><a href="#">Men</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Electronice</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Intimates</a></li>
-                                <li><a href="#">Kids</a></li>
-                                <li><a href="#">Dresses</a></li>
-                                <li><a href="#">Rompers</a></li>
-                                <li><a href="#">Bras</a></li>
-                                <li><a href="#">Shorts</a></li>
-                                <li><a href="#">Bottom</a></li>
-                                <li><a href="#">T-shirts</a></li>
+                                @forelse($tags as $tag)
+                                    <li><a href="#">{{$tag->name}}</a></li>
+                                @empty
+                                    <p class="text-center text-secondary"></p>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
