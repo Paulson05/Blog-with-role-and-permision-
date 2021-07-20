@@ -48,71 +48,39 @@
 
                     <div class="comments-area">
                         <div class="comment_area mb-50 clearfix">
-                            <h5 class="mb-4">3 Comments</h5>
+                            <h5 class="mb-4">{{$post->comments->count()}} Comments</h5>
 
                             <ol>
                                 <!-- Single Comment Area -->
                                 <li class="single_comment_area">
-                                    <div class="comment-wrapper clearfix">
-                                        <div class="comment-meta">
-                                            <div class="comment-author-img">
-                                                <img class="img-circle" src="img/partner-img/tes-1.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="comment-content">
-                                            <h5 class="comment-author"><a href="#">Lim Jannat</a></h5>
-                                            <p>This post is very helpful. I like your fashion tips. Keep up awesome job!</p>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                    </div>
+
                                     <ul class="children">
-                                        <li class="single_comment_area">
-                                            <div class="comment-wrapper clearfix">
-                                                <div class="comment-meta">
-                                                    <div class="comment-author-img">
-                                                        <img class="img-circle" src="img/partner-img/tes-2.png" alt="">
+                                       @forelse($post->comments as $comment)
+                                            <li class="single_comment_area">
+                                                <div class="comment-wrapper clearfix">
+                                                    <div class="comment-meta">
+                                                        <div class="comment-author-img">
+                                                            <img class="img-circle" src="img/partner-img/tes-2.png" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <h5 class="comment-author"><a href="#">{{$comment->name}}</a></h5>
+                                                        <p>{{$comment->comments}}</p>
+                                                        <a href="#" class="reply">Reply</a>
                                                     </div>
                                                 </div>
-                                                <div class="comment-content">
-                                                    <h5 class="comment-author"><a href="#">Nazrul Islam</a></h5>
-                                                    <p>Thanks for your valuable feedback @Lim Jannat. Stay with us.</p>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @empty
+                                           <lI class="single_comment_area" >
+                                               <p>no coment yet</p>
+                                           </lI>
+                                           @endforelse
+
+
                                     </ul>
                                 </li>
 
-                                <li class="single_comment_area">
-                                    <div class="comment-wrapper d-flex clearfix">
-                                        <div class="comment-meta">
-                                            <div class="comment-author-img">
-                                                <img class="img-circle" src="img/partner-img/tes-3.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="comment-content">
-                                            <h5 class="comment-author"><a href="#">Naznin Ritu</a></h5>
-                                            <p>Great post about treanding fashion 2019. Thank you.</p>
-                                            <a href="#" class="reply">Reply</a>
-                                        </div>
-                                    </div>
-                                    <ul class="children">
-                                        <li class="single_comment_area">
-                                            <div class="comment-wrapper clearfix">
-                                                <div class="comment-meta">
-                                                    <div class="comment-author-img">
-                                                        <img class="img-circle" src="img/partner-img/tes-2.png" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="comment-content">
-                                                    <h5 class="comment-author"><a href="#">Nazrul Islam</a></h5>
-                                                    <p>Thanks for your valuable feedback @Naznin Ritu, Stay with us.</p>
-                                                    <a href="#" class="reply">Reply</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
+
                             </ol>
                         </div>
 

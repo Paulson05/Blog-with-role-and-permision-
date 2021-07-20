@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function postComment(Request $request){
+    public function postComment(Request $request ){
         $this->validate($request,[
             'name'=>'required|max:25',
             'email'=>'required|email',

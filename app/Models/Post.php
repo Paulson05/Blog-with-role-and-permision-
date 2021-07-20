@@ -16,6 +16,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class,'posts_tags','posts_id','tags_id');
     }
     public  function comments(){
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment','posts_id' );
     }
 }

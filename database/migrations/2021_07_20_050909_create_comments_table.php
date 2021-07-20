@@ -18,14 +18,12 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('comments');
-            $table->boolean('approved');
+            $table->boolean('approved')->default('1');
             $table->timestamps();
 
             $table->foreignId('posts_id')->references('id')->on('posts')->cascadeOnDelete();
 
-
         });
-
     }
 
     /**
