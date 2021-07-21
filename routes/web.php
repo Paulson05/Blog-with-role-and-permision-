@@ -69,5 +69,10 @@ Route::resource('/category', CategoryController::class)->except('create');
 
 Route::post('/comments', [CommentController::class, 'postComment'])->name('comment.post');
 
+// modal reload
+
+
+Route::post('stu', [PostController::class, 'AT'])->name('pos');
+
 Auth::routes();
 
