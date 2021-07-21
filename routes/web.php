@@ -72,7 +72,7 @@ Route::post('/comments', [CommentController::class, 'postComment'])->name('comme
 // modal reload
 
 
-Route::post('stu', [PostController::class, 'AT'])->name('pos');
+Route::get('/fetchpost', [PostController::class, 'fetchPost'])->name('post.fetch');
 
 Auth::routes();
 
