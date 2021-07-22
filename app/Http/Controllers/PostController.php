@@ -120,53 +120,91 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
+                $post =Post::find($id);
+
+                if ($post)
+                {
+                    return response()->json([
+                        'status' => 200,
+                        'post' => $post,
+
+                    ]);
+                }
+
+    }
+    public function getEdit($id)
+    {
+        $post =Post::find($id);
+
+        if ($post)
+        {
+            return response()->json([
+                'status' => 200,
+                'post' => $post,
+
+            ]);
+        }
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
+
+
+    public function putUpdate(Request $request, $id)
     {
-//        dd($request->all());
 
+        $validator = Validator::make($request->all(),[
 
-
-        $this->validate($request,[
             'title' => 'required',
             'body'=>  'required',
             'slug' => 'required',
             'image' => 'required',
             'category_id' => 'required',
-
         ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'errors' => $validator->messages(),
+            ]);
+        }
+        else
+        {
+            $post= Post::find($id);
+           if($post){
+               if ( $request->hasfile('image')){
+                   $file  =$request->file('image');
+                   $extension = $file->getClientOriginalExtension();
+                   $filename =    time() . '.' .$extension;
+                   $file->move('upload/images', $filename);
+
+               }
+               else {
+                   $filename='';
+               }
 
 
-        if ( $request->hasfile('image')){
-            $file  =$request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename =    time() . '.' .$extension;
-            $file->move('upload/images', $filename);
+               $post = Post::update(collect($request->only(['title','body','slug','category_id']))->put('image',$filename)->all());
+               $post->tags()->sync($request->name);
+               $post->update();
+               return response()->json([
+                   'status' => 200,
+                   'message' => 'post added successfully',
+
+               ]);
+           }
+           else{
+               return response()->json([
+                   'status' => 200,
+                   'message' => 'post added successfully',
+
+               ]);
+           }
 
         }
-        else {
-            $filename='';
-        }
-        $post = update(collect($request->only(['title','body','slug','category_id']))->put('image',$filename)->all());
-//        $post->update($request->only(['title','body','slug','category_id']));
-        $post->tags()->sync($request->name);
-        $post->save();
 
-        return redirect()->back();
     }
 
     /**

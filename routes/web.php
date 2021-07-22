@@ -68,6 +68,9 @@ Route::resource('/tag',TagController::class)->except('create');
 Route::resource('/category', CategoryController::class)->except('create');
 
 Route::post('/comments', [CommentController::class, 'postComment'])->name('comment.post');
+Route::put('update-post/{id}', [PostController::class, 'putUpdate']);
+Route::get('edit-post/{id}', [PostController::class, 'getEdit']);
+
 
 // modal reload
 
